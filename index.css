@@ -1,0 +1,35 @@
+
+Header{
+  position: absolute;
+  width: 573px;
+  height: 105px;
+  left: 173px;
+  top: 26px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+Paste_file{
+  position: absolute;
+  width: 574px;
+  height: 64px;
+  left: 172px;
+  top: 206px;
+
+}
+
+Bar{
+  width: 241px;
+  height: 62px;
+  left: 339px;
+  top: 317px;
+}
