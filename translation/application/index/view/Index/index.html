@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <!--  layui.css -->
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.7/dist/css/layui.css">
+    <!--  layui.js -->
+    <script src="//unpkg.com/layui@2.6.7/dist/layui.js"></script>
+</head>
+
+<body>
+    <div style="text-align:center;margin-top:20px;font-size:40px;">h5 translate</div>
+    <div style="text-align:center;margin-top:20px;">
+        <button type="button" class="layui-btn" id="test1">
+            <i class="layui-icon">&#xe67c;</i>upload</button></div>
+    <div style="text-align:center;margin-top:20px;display: none" class="maole">
+        <a href="" id="pdf">
+            <button type="button" class="layui-btn">
+                <i class="layui-icon">&#xe67c;</i>download pdf
+            </button>
+        </a>
+        <a href="" id="fanyi">
+            <button type="button" class="layui-btn" >
+            <i class="layui-icon">&#xe67c;</i>translate</button>
+        </a>
+        <a href="" id="pdffanyi">
+            <button type="button" class="layui-btn" >
+                <i class="layui-icon">&#xe67c;</i>translate and download pdf
+            </button>
+        </a>
+    </div>
+    <script src="/static/build/layui.js"></script>
+    <script>
+        layui.use(['jquery', 'upload'],function() {
+            var upload = layui.upload;
+            var $ = layui.$
+
+            //Implementation example
+            var uploadInst = upload.render({
+                elem: '#test1' //Bound element
+                ,
+                url: '/index.php/index/index/upload' //Upload interface
+                ,
+                accept: 'file',
+                done: function(res) {
+                    //Upload completed callback
+                    if (res.code == 1) {
+                        layer.msg('Uploaded successfully');
+                        $(".maole").show();
+                        $("#pdf").attr("href", '/index.php/index/index/pdf?filename=' +res.data);
+                        $("#fanyi").attr("href", '/index.php/index/index/fanyi?filename='+res.data);
+                        $("#pdffanyi").attr("href", '/index.php/index/index/pdffanyi?filename='+res.data);
+                    }
+                },
+                error: function() {
+                    //Request exception callback
+                }
+            });
+        });
+    </script>
+</body>
+</html>
